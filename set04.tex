@@ -4,19 +4,144 @@
 \hwtitle{Honors Analysis II}
 \input{preamble}
 
+\newcommand{\Mtwo}{\mathrm{Mat}_{2 \times 2}}
+\newcommand{\GL}{\mathrm{GL}}
+
 \begin{document}
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+Granny's \textbf{implicit} belief that everything should get out of her way extended to other witches, very tall trees and, on occasion, mountains. \\
+\byline{Terry Pratchett in \textit{Wyrd Sisters}, not about the cubic curve known as the Witch of Agnesi.}
+
 \end{inspiration}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Terminology}
 
+\begin{problem}
+State the \textbf{Inverse Function Theorem}.
+\end{problem}
+
+\begin{problem}
+State the \textbf{Implicit Function Theorem}.
+\end{problem}
+
+\begin{problem}
+  What is a \textbf{critical point} of a function $f : \R^n \to \R$?
+\end{problem}
+
+\begin{problem}
+  What is a \textbf{regular value} of a function $f : \R^n \to \R$?
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numericals}
 
+\begin{problem}
+  Recall \ref{derivative-of-determinant}.
+
+  Denote the set of $2$-by-$2$ matrices with real entries by $\Mtwo(\R)$.
+
+  Determine the regular values of $\det : \Mtwo(\R) \to \R$.
+\end{problem}
+  
+\begin{problem}
+  Recall \ref{derivative-of-inverse}.
+  
+Let $\GL_2(\R)\subset \Mtwo(\R)$ be the set of invertible $2$-by-$2$ matrices.\\ Consider the map
+$\mathrm{inv}:\GL_2(\R)\to \GL_2(\R)$ defined by $\mathrm{inv}(A)=A^{-1}$.
+
+Fix $A_0\in \GL_2(\R)$.  Define
+\[
+F:\Mtwo(\R)\times \Mtwo(\R)\to \Mtwo(\R),\qquad F(A,B)=AB-I.
+\]
+Note that $F(A,B)=0$ holds exactly when $B=A^{-1}$.
+
+Use ``implicit differentiation'' in order to compute
+the derivative $D(\mathrm{inv})_{A_0}(H)$, i.e., the derivative of the inverse map at $A_0 \in GL_2(\R)$ and in the direction $H\in M_n(\R)$.
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exploration}
 
+\begin{problem}
+Define $\Phi:(0,\infty)\times\R\to\R^2$ by
+\[
+\Phi(r,\theta)=(r\cos\theta,r\sin\theta).
+\]
+Compute $\det D\Phi(r,\theta)$.
+
+Your friend says ``so every point of $\R^2\setminus\{0\}$ has a neighborhood on which $(x,y)$ can be written as $(r,\theta)$ uniquely.''
+
+Is this precisely right?
+\end{problem}
+
+\pagebreak
+
+\begin{problem}
+Consider the elliptic curve
+\[
+E=\{(x,y)\in\mathbb R^2 : y^2 = x^3 - x\}.
+\]
+Let $F(x,y)=y^2-(x^3-x)$, so that $E=F^{-1}(0)$.
+ 
+Pick $x_0$ so that $p=(x_0,0)\in E$, i.e., pick $x_0\in\{-1,0,1\}$.
+
+Explain why you \emph{cannot} solve locally for $y$ as a function of $x$ around such a point $p$, but you \emph{can} solve locally for $x$ as a function of $y$.
+
+More precisely, show there is an $\epsilon > 0$ and a $C^1$ function $f:(-\epsilon,\epsilon)\to\mathbb R$ such that $f(0)=x_0$ and, when $-\epsilon < y < \epsilon$, we have $(f(y),y) \in E$. In this case, compute $f'(0)$.
+\end{problem}
+
+\begin{problem}
+The \textbf{folium of Descartes} is the curve in $\R^2$ carved out by
+\[
+x^3+y^3=3xy.
+\]
+Assume $y\neq 0$ and set $t=x/y$.
+
+Express the points on the curve with $y\neq 0$ in parametric form
+$(x(t),y(t))$ where $t = x/y$. Compute $x'(t)$. For which values of $t$ is $x'(t)\neq 0$?
+
+Use the Inverse Function Theorem to identify points of the folium where the curve is the graph of a differentiable function $y = y(x)$. Locate the two places where this fails, and explain what happens there.
+\end{problem}
+
+\begin{problem}
+Fix an integer $k\ge 2$, and consider the map
+$P: \Mtwo(\R)\to \Mtwo(\R)$
+given by 
+$P(X)=X^k$. This is the $k$-th power map.
+
+Show that $P$ is differentiable and compute the derivative of $P$ at $I$. Show that the derivative at $I$ is an isomorphism. Conclude that for every sufficiently small matrix $H$, the equation $X^k=I+H$ has a solution.
+
+Is it unique? Does every matrix have a $k$-th root?
+\end{problem}
+
+\begin{problem}
+  Interpret $\mathbb{R}^{n+1}$ as the coefficients of a degree $n$ polynomial. Pick $P \in \mathbb{R}^{n+1}$ so that there is a root $r$ of the polynomial $P$, i.e.,
+  \[
+    P_0 + P_1 \, r + P_2 \, r^2 + \cdots + P_n r^n = 0.
+  \]
+  Does there exist a function $f : U \to \R$ defined on a neighborhood $U \ni P$ so that $f(Q)$ is a root of the polynomial $Q$? In this case, compute $f'(P)$.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}
+Let $F:\R\to\R$ be $C^1$. If $F'(x) \neq 0$ for all $x\in\R$, then $F$ is surjective.
+\end{problem}
+
+\begin{problem}
+Let $F:\R^n\to\R^n$ be $C^1$. If $\det DF(x)\neq 0$ for all $x\in\R^n$, then $F$ is injective.
+\end{problem}
+
+\begin{problem}
+  Recall \ref{cauchy-riemann-equations}.
+
+  Suppose $F:\R^2 \to\R^2$ is $C^1$ and $F(x,y) = (u(x,y),v(x,y))$ for functions $u, v : \R^2 \to \R$.  Suppose $F$ satisfies the Cauchy--Riemann equations, i.e., $u_x=v_y$ and $u_y=-v_x$. Assume $DF(x_0,y_0)$ is invertible at some $(x_0,y_0)$, and let $G=(p,q)$ be the $C^1$ local inverse of $F$ near $(x_0,y_0)$. Then $G$ also satisfies the Cauchy--Riemann equations.
+\end{problem}
+
 
 \end{document}
