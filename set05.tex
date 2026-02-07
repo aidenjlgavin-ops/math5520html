@@ -8,15 +8,134 @@
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+How handsome the great sweeping curves in the edge of the ice, answering somewhat to those of the shore, but more regular!
+\byline{Henry David Thoreau's \textit{Walden} but not about regular values and curves.}
 \end{inspiration}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Reflection}
+
+\begin{problem}
+  This week marks about a third of the way through the course. Next week
+  offers a significant change as we wrap up \textbf{differentiation}
+  and we will begin \textbf{integration}. Carefully think back over
+  the past month.  What is going well in Math~4182H? How can I improve
+  the course?  What strategies will you pursue to improve your
+  learning?
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Terminology}
 
+\begin{problem}
+  For a function $f : A \to B$ and $b \in B$, what is meant by $f^{-1}(b)$?
+\end{problem}
+
+\begin{problem}
+  For a function $f : A \to B$ with $C \subseteq A$, carefully explain what is meant by $f |_C$.
+\end{problem}
+
+\begin{problem}
+  What is a \textbf{regular value} of a function $f : \R^n \to \R^m$? (This is not exactly \ref{regular-value-n-to-one}.)
+\end{problem}
+
+\begin{problem}\label
+  Suppose $0$ is a regular value of $f : \R^n \to \R$. For a point $p \in f^{-1}(0)$, define the tangent space $T_p f^{-1}(0)$. (Compare your answer to \ref{tangent-space}.)
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numericals}
 
+\begin{problem}
+  Define $f : \R^3 \to \R$ by $f(x,y,z)=x^2+y^2-z$. Check that $0$ is a regular value of $f$, and write down the tangent plane to $f^{-1}(0)$ at some point $(x_0,y_0,z_0) \in f^{-1}(0)$.
+\end{problem}
+
+\begin{problem}\label{parameterize-corners}%
+  It is possible to parameterize a curve with ``corners'' using $C^1$ functions.
+
+  Specifically, define $f : \R \to \R$ via
+  \[
+    f(x) = \begin{cases}
+      \phantom{-}x^2 & \text{if } x \geq 0, \\
+      -x^2 & \text{if }x < 0.
+      \end{cases}
+    \]
+    Check that $f$ is $C^1$.
+
+    What shape does $S = \{ \left(f(\cos \theta), f(\sin \theta)\right)  \in \R^2 \mid \theta \in \R \}$ make?
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Exploration}
 
+\begin{problem}
+The $C^1$ functions $u,v:\R^2\to\R$ satisfy the Cauchy--Riemann equations (\ref{cauchy-riemann-equations}). Suppose $a \in \R^2$ and that $u(a)$ is a regular value of $u$ and $v(a)$ is a regular value of $v$. Show that the level curve $u^{-1}(u(a))$ meets the level curve $v^{-1}(v(a))$ orthogonally at the point $a$.
+\end{problem}
+
+\begin{problem}\label{lagrange-multipliers}%
+Suppose $f,g:\R^n\to\R$ are $C^{1}$. Let $x\in\R^n$ satisfy $g(x)=0$, and assume
+that $x$ is a local maximizer of $f$ subject to the constraint $g=0$; that is,
+there exists a neighborhood $U$ of $x$ such that
+\[
+f(x)\ge f(y)\quad\text{for all }y\in U\cap g^{-1}(0).
+\]
+Assume also that $\nabla g(x)\neq 0$.
+
+Show that there exists $\lambda\in\R$ such that
+\[
+\nabla f(x)=\lambda\,\nabla g(x).
+\]
+This is the method of \textbf{Lagrange multipliers}.
+\end{problem}
+
+\begin{problem}
+  Consider a smooth function $f : \R^2 \to \R$ and the circle
+  \[
+    S^1 = \{ (x,y) \in \R^2 : x^2 + y^2 = 1 \}.
+  \]
+  I can think of two ways to find the extreme values of $f |_{S^1}$.  First, I could use the method of Lagrange multipliers as in \ref{lagrange-multipliers}. Second, I could parameterize $S^1$ and consider a function of a single variable $g : \R \to \R$ given by
+  \[
+    g(\theta) = f(\cos \theta, \sin\theta).
+  \]
+  Carefully relate finding the extrema of $g$ to applying the method of Lagrange multipliers to the original function $f$.
+\end{problem}
+
+\begin{problem}
+Let $n\ge 2$ and let $x_1,\dots,x_n>0$. Define 
+\[
+A=\frac{x_1+\cdots+x_n}{n}
+\quad\text{and}\quad
+G=(x_1x_2\cdots x_n)^{1/n}.
+\]
+Show that $G \le A$. This is the inequality of arithmetic and geometric means, otherwise known as the \textbf{AM--GM inequality}.
+
+\textit{Hint:} You can use \ref{lagrange-multipliers} to do this.
+\end{problem}
+
+\begin{problem}
+  Let $A = (a_{ij})$ be an $n\times n$ \emph{symmetric} matrix with real entries, meaning $a_{ij} = a_{ji}$. Define $S^{n-1} = \{ (x_1,\ldots,x_n) \in \R^n \mid \sum_{i=1}^n {x_i}^2 = 1 \}$ and define $f : \R^n \to \R$ by
+\[
+f(x) = x^{\mathsf T}Ax.
+\]
+The function $f$ attains a maximum value somewhere (why?), say at $v \in \R^n$. Using \ref{lagrange-multipliers}, show that $Av = \lambda v$ for some $\lambda \in \R$.
+
+This provides a proof that every symmetric matrix has an eigenvalue, a consequence of the \textbf{spectral theorem}.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}
+  Suppose $f : \R \to \R$ is differentiable at $0$ with $f'(0) \neq 0$. Then there exists $\epsilon > 0$ so that $f |_{(-\epsilon,\epsilon)}$ is injective.
+\end{problem}
+
+\begin{problem}
+  Suppose $\gamma : \R \to \R^n$ is a curve such that, for all $t \in \R$, we have $\gamma'(t) \neq 0$. Then for all $t \in \R$, it is the case that $\gamma'(t)$ is orthogonal to $\gamma''(t)$.
+\end{problem}
+
+\begin{problem}
+  Suppose $f : \R^2 \to \R$ is smooth and $0$ is a regular value of $f$. Then there exist functions $c_i : (0,1) \to \R^2$ so that $f^{-1}(0)$ is the union of the images of the $c_i$'s.
+\end{problem}
 
 \end{document}
