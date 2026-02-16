@@ -4,19 +4,159 @@
 \hwtitle{Honors Analysis II}
 \input{preamble}
 
+\newcommand{\area}{\operatorname{area}}
+
 \begin{document}
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+  Does anyone believe that the difference between the Lebesgue and Riemann integrals can have physical significance, and that whether say, an airplane would or would not fly could depend on this difference?
+
+  If such were claimed, I should not care to fly in that plane.
+\byline{Richard W. Hamming}
 \end{inspiration}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Terminology}
 
+{\footnotesize This week is especially heavy on definitions. But we are building foundations that will carry us through much of the rest of the semester. We've spent the first third of the course on derivatives; now we develop a theory of integration for several variables---and that requires a bit more nuance in our understanding of subsets of the plane.}
+
+\begin{problem}
+  What is a \textbf{partition} of a rectangle $R=[a,b]\times[c,d]\subset\R^2$?
+\end{problem}
+
+\begin{problem}
+  Consider a function  $f : [a,b] \times [c,d] \to \R$.
+  
+What is the \textbf{lower sum} $s_P(f)$ and the \textbf{upper sum} $S_P(f)$ of $f$?
+
+What is the \textbf{lower integral} $\underline{I}_R(f)$ and \textbf{upper integral} $\overline{I}_R(f)$ of $f$?
+\end{problem}
+  
+\begin{problem}
+  What does it mean for a function to be \textbf{(Riemann) integrable}?
+\end{problem}
+
+\begin{problem}
+  What is meant by \textbf{zero content}?
+\end{problem}
+
+\begin{problem}\label{define-boundary}%
+  For a subset $S \subset \R^2$, define the \textbf{boundary} $\partial S$.
+
+  (In doing so, you might end up also defining \textbf{interior} and \textbf{closure} as well.)
+\end{problem}
+
+\begin{problem}\label{define-area}%
+  For a subset $S \subset \R^2$, define the \textbf{indicator function} $\chi_S : \R^2 \to \R$.
+
+  Based on this, define what we mean by the \textbf{area} of $S$.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numericals}
 
+\begin{problem}
+  Let $S\subset\R^2$ be the triangle with vertices $(0,0)$, $(1,0)$, $(0,2)$.
+
+  Compute $\area(S)$ by computing $\area(S)=\iint_S 1\,dA$.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exploration}
 
+\begin{problem}
+  Show that if $Z\subset\R^2$ has zero content and $U\subset Z$, then $U$ likewise has zero content.
+\end{problem}
+
+\begin{problem}\label{boundary-indicator}%
+  Let $S\subset\R^2$ be bounded. Prove carefully that $\chi_S$ is discontinuous at $p$ if and only if $p\in\partial S$.
+\end{problem}
+
+\begin{problem}\label{graph-zero-content}%
+  Let $f:[a,b]\to\R$ be continuous.
+  Show that the graph $\Gamma=\{(x,f(x)) : x\in[a,b]\}\subset\R^2$ has zero content.
+\end{problem}
+
+\begin{problem}\label{smooth-curve-zero-content}%
+  Let $\gamma:[a,b]\to\R^2$ be $C^1$.   Prove that the image $\gamma([a,b])$ has zero content.
+\end{problem}
+
+\begin{problem}
+  Putting together \ref{define-area} and \ref{boundary-indicator} and \ref{smooth-curve-zero-content} and \ref{union-zero-content}, formulate and prove a theorem describing a large class of regions $S$ in the plane for which $S$ is Jordan measurable.
+\end{problem}
+
+\begin{problem}\label{cantor-set}%
+Let $C\subset[0,1]$ be the middle--third Cantor set. Recall one construction: set
+\[
+C_0=[0,1],\qquad
+C_{n+1}=\frac13 C_n \,\cup\,\Bigl(\frac23+\frac13 C_n\Bigr),
+\]
+so that $C=\displaystyle\bigcap_{n\ge 0} C_n$.
+
+What is its boundary $\partial C$?
+\end{problem}
+
+\begin{problem}
+Define \textbf{Cantor dust} to be the set $D := C\times C \subset [0,1]^2$.
+
+Then, following \ref{cantor-set}, define
+\[
+  D_n := C_n\times C_n \subset [0,1]^2.
+\]
+Prove that $D_{n+1}\subset D_n$ and that $D=\displaystyle\bigcap_{n\ge 0} D_n$.
+Show that $D_n$ is a union of $4^n$ squares, each of side length $3^{-n}$, and 
+ therefore
+  \[
+  \area(D_n)=4^n\cdot 3^{-2n}=\Bigl(\frac49\Bigr)^n.
+  \]
+Finally, show that $D$ is a zero content set.
+\end{problem}
+
+\begin{problem}
+Let $X,Y\subset\mathbb{R}^2$ be bounded and assume that their boundaries have zero content.
+Prove 
+\[
+  \partial(X\cup Y)\subset \partial X\cup \partial Y,
+  \qquad
+  \partial(X\cap Y)\subset \partial X\cup \partial Y.
+\]
+
+Then deduce that $\area(\partial(X\cup Y))=0$ and $\area(\partial(X\cap Y))=0$, and hence that
+$X\cup Y$ and $X\cap Y$ are Jordan measurable.
+
+Finally prove an inclusion--exclusion formula, namely
+\[
+  \area(X\cup Y)=\area(X)+\area(Y)-\area(X\cap Y).
+\]
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Prove or Disprove and Salvage if Possible}
 
+\begin{problem}\label{union-zero-content}%
+  If $Z_1,\dots,Z_k\subset\R^2$ have zero content, then $\displaystyle\bigcup_{j=1}^k Z_j$ has zero content.
+\end{problem}
+
+\begin{problem}
+  Consider the rectangle $S = [a,b] \times [c,d]$.
+  
+  For a bounded function $f : S \to \R$, there exists $s \in S$ so that
+  \[
+    \iint_S f\, dA = f(s) \cdot \area(S).
+  \]
+  In this case, we say $f(s)$ is the \textbf{average value} of $f$.
+  \end{problem}
+
+  \begin{problem}
+    Suppose $f:\R^2\to\R$ is bounded.
+    
+  Then $f$ is Riemann integrable on every rectangle $R = [a,b] \times [c,d]$.
+\end{problem}
+
+\begin{problem}
+  For every subset $S \subset \R^2$, the function $\chi_S : \R^2 \to \R$ is Riemann integrable.
+\end{problem}
+
 \end{document}
+
