@@ -4,19 +4,141 @@
 \hwtitle{Honors Analysis II}
 \input{preamble}
 
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Jac}{\operatorname{Jac}}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
 \begin{document}
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+Le leggi della logica non bastano a creare l'opera del matematico.\footnote{``The laws of logic are not enough to create the work of the mathematician.''}
+\byline{Guido Fubini}
 \end{inspiration}
 
 \section{Terminology}
 
+\begin{problem}
+  Let $S\subset \R^2$ be a bounded region.
+
+  What does it mean to say $S$ is a \textbf{type I region}?
+  A \textbf{type II region}?
+\end{problem}
+
 \section{Numericals}
+
+\begin{problem}\label{calabi}%
+Show that
+\[
+\lim_{\epsilon \to 0^{+}} \int_{0}^{1-\epsilon}\int_{0}^{1-\epsilon}\frac{dx\,dy}{1-x^{2}y^{2}}
+=\sum_{n=0}^{\infty}\frac{1}{(2n+1)^{2}}
+=\frac{3}{4}\sum_{n=1}^{\infty}\frac{1}{n^{2}}.
+\]
+\end{problem}
+
+\begin{problem}
+Compute the integral and sum appearing in \ref{calabi}.
+
+\textit{Hint:} Let $T$ be the right triangle with vertices $(0,0)$ and $(0,\pi/2)$ and $(\pi/2,0)$. Use the transformation $f\colon T\to\mathbb{R}^{2}$ defined by
+\[
+f(u,v)=\Bigl(\frac{\sin u}{\cos v},\,\frac{\sin v}{\cos u}\Bigr)
+\]
+to verify
+\[
+\int_{0}^{1}\int_{0}^{1}\frac{1}{1-x^{2}y^{2}} \, dx \, dy
+=\iint_{T}1\,du\,dv
+\]
+and then to ultimately compute $\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^{2}}$.
+\end{problem}
 
 \section{Exploration}
 
+\begin{problem}\label{product-formula}%
+  Suppose $f : [a,b] \to \R$ and $g : [c,d] \to \R$ are continuous. Consider the rectangle $S = [a,b] \times [c,d]$ and define $h : S \to \R$ by $h(x,y) = f(x) \, g(y)$, and then relate $\iint_S h \, dA$ to $\int_a^b f(x) \, dx$ and $\int_c^d g(y) \, dy$.
+\end{problem}
+
+\begin{problem}
+Define
+\[
+I := \int_{-\infty}^{\infty} e^{-x^2}\,dx.
+\]
+Use \ref{product-formula} to show
+\[I^2
+=
+\int_{\mathbb{R}^2} e^{-(x^2+y^2)}\,dx\,dy,
+\]
+and then switch to polar coordinates to prove $I = \sqrt{\pi}$.
+\end{problem}
+
+\begin{problem}
+Define the $\Gamma$-function for $s>0$ by
+\[
+\Gamma(s):=\int_{0}^{\infty} t^{s-1}e^{-t}\,dt.
+\]
+For $n\in\mathbb{N}$, set
+\[
+G_n := \int_{\mathbb{R}^n} e^{-\|x\|^2}\,dx.
+\]
+Define $f(r) = e^{-r^2}$, and 
+explain why there is a constant $A_{n-1}$ (the surface area of the unit
+$(n-1)$-sphere) such that 
+  \[
+  \int_{\mathbb{R}^n} f(\|x\|)\,dx \;=\; \int_{0}^{\infty} f(r)\,A_{n-1}\,r^{n-1}\,dr.
+  \]
+Therefore
+  \[
+  G_n = \pi^{n/2} = A_{n-1}\int_{0}^{\infty} r^{n-1}e^{-r^2}\,dr.
+  \]
+Compute the integral
+  \[
+  \int_{0}^{\infty} r^{n-1}e^{-r^2}\,dr
+  \]
+  in terms of the $\Gamma$-function, and deduce a formula for
+  $A_{n-1}$.
+
+Finally, compute the volume $V_n$ of the unit $n$-ball
+  \[
+  B^n := \{x\in\mathbb{R}^n : \|x\|\le 1\}.
+  \]
+\end{problem}
+
+
+
+\begin{problem}
+Let $R\subset \mathbb{R}^2$ be a rectangle with axis-parallel sides. Suppose $R$ is partitioned into finitely many axis-parallel subrectangles
+\[
+R = R_1 \sqcup R_2 \sqcup \cdots \sqcup R_n
+\]
+whose interiors are pairwise disjoint and whose union is $R$. Assume that for each $i$, the rectangle $R_i$ has \emph{at least one} side length that is an integer.
+
+Prove that $R$ must also have at least one side length that is an integer.
+
+\textit{Hint:} Consider the function $f(x,y)=e^{2\pi i(x+y)}$ and the integral
+\[
+I(S) \;:=\; \int\!\!\int_{S} e^{2\pi i(x+y)}\,dx\,dy
+\]
+for an axis-parallel rectangle $S=[a,b]\times[c,d]$ and 
+show that $I(S)=0$ if and only if at least one of the side lengths $b-a$ or $d-c$ is an integer.
+Then use additivity of the integral over a partition, i.e., \(I(R)=\sum_{i=1}^n I(R_i)\).
+\end{problem}
+
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}\label{fubini-no-hypotheses}%
+  If $f$ is Riemann integrable on $R=[0,1]\times[0,1]$, then for every $y\in[0,1]$ the function
+  $x\mapsto f(x,y)$ is Riemann integrable on $[0,1]$.
+\end{problem}
+
+\begin{problem}\label{swap-always}%
+  If the two iterated (Riemann!) integrals
+  \[
+    \int_0^1\left(\int_0^1 f(x,y)\,dx\right)\,dy
+    \qquad\text{and}\qquad
+    \int_0^1\left(\int_0^1 f(x,y)\,dy\right)\,dx
+  \]
+  both exist, then they are equal.
+\end{problem}
 
 \end{document}
