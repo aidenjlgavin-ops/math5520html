@@ -5,18 +5,164 @@
 \input{preamble}
 
 \begin{document}
+
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+It is good to have an end to journey toward; but it is the journey that matters, in the end.
+\byline{Ursula K.\ Le Guin in \textit{The Left Hand of Darkness}}
 \end{inspiration}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Terminology}
 
+\begin{problem}
+  Let $C$ be a smooth curve in $\R^n$ parametrized by $g:[a,b]\to\R^n$ with $g'(t)\neq 0$.
+  Define the \textbf{arc length} of $C$.
+\end{problem}
+
+\begin{problem}\label{line-integral-definition}%
+  Let $F$ be a continuous vector field defined in a neighborhood of a smooth oriented curve $C$ in $\R^n$.
+  
+  Define the \textbf{line integral} $\displaystyle\int_C F\cdot dx$.
+\end{problem}
+
+\begin{problem}\label{conservative-definition}%
+  What does it mean for a vector field $F:U\to\R^n$ (with $U\subseteq\R^n$ open) to be \textbf{conservative}?
+\end{problem}
+
+\begin{problem}\label{potential-definition}%
+  What is a \textbf{potential function} for $F$?
+\end{problem}
+
+\begin{problem}
+  What is a \textbf{piecewise smooth} curve?  A \textbf{closed} curve?  A \textbf{simple} curve?
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numericals}
 
+\begin{problem}
+  One arch of the \textbf{cycloid} is the curve
+  $g(t)=(t-\sin t,\; 1-\cos t)$ with $t\in[0,2\pi]$.
+
+  Find the arc length of one arch of the cycloid.
+\end{problem}
+
+\begin{problem}
+  The \textbf{logarithmic spiral} is the curve
+  $g(t) = (e^{-t}\cos t,\; e^{-t}\sin t)$ for $t \in [0, \infty)$.
+  Show that this curve has finite total arc length and compute it.
+\end{problem}
+
+\begin{problem}
+  Define $F : \R^2 \to \R^2$ via $F(x,y)=(x^2 y,\;-xy^2)$. Is $F$ conservative?
+\end{problem}
+
+\begin{problem}\label{winding-number}%
+  The \textbf{angle form} on $\R^2\setminus\{0\}$ is
+  \(
+    \omega = \displaystyle\frac{-y\,dx+x\,dy}{x^2+y^2}
+    \).
+
+    Integrate $\omega$ over various curves, like
+\begin{enumerate}
+\item[(a)] the unit circle, oriented counterclockwise,
+  \item[(b)] the circle of radius $2$ centered at $(3,0)$, oriented counterclockwise.
+  \item[(c)] the unit circle traversed counterclockwise \emph{twice}.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Show that on the half-plane $U=\{(x,y):x>0\}$, the form $\omega$ equals $d\!\left(\arctan(y/x)\right)$.
+  Conclude that $\omega$ is conservative on $U$, and find a potential.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exploration}
 
+\begin{problem}\label{cross-partials-necessary}%
+  Suppose $U\subseteq\R^n$ is open and $F:U\to\R^n$ is $C^1$ and conservative.
+
+  Give names to the components of $F$ via $F(u) = (F_1(u),F_2(u),\ldots,F_n(u))$.
+
+  Show that
+  \(
+    \displaystyle\frac{\partial F_i}{\partial x_j}=\frac{\partial F_j}{\partial x_i}\)  on $U$
+    for all $i,j$.
+\end{problem}
+
+\begin{problem}\label{closed-vs-exact}%
+  A $C^1$ vector field $F = (F_1, \ldots, F_n)$ on an open set $U \subseteq \R^n$ is called
+  \textbf{closed} if
+  $\dfrac{\partial F_i}{\partial x_j} = \dfrac{\partial F_j}{\partial x_i}$ for all $i, j$.
+  It is called \textbf{exact} if it is conservative
+  (cf.~\ref{conservative-definition}).
+  Explain, using \ref{cross-partials-necessary}, why every exact field is closed.
+\end{problem}
+
+\begin{problem}\label{ftc-for-line-integrals}%
+  Suppose $f:\R^n\to\R$ is $C^1$, and let $C$ be a piecewise smooth curve from $a$ to $b$ in $\R^n$.
+  Prove the \textbf{fundamental theorem for line integrals}, namely that
+  \[
+    \int_C \nabla f\cdot dx = f(b)-f(a).
+  \]
+\end{problem}
+
+\begin{problem}\label{poincare-lemma}%
+  An open set $U\subseteq\R^n$ is \textbf{star-shaped} with respect to the
+  origin if for every $x\in U$ and every $t\in[0,1]$, we have $tx\in U$.
+  Let $F:U\to\R^n$ be $C^1$ and closed (cf.~\ref{closed-vs-exact}).
+  Define $f:U\to\R$ by
+  \[
+    f(x)=\int_0^1 F(tx)\cdot x\,dt.
+  \]
+  Prove that $\nabla f = F$.
+  This is the \textbf{Poincar\'e lemma}: on star-shaped domains, closed implies exact.
+\end{problem}
+
+\begin{problem}\label{integrate-around-boundary}%
+  Parametrize the unit circle counterclockwise.
+  Compute $\displaystyle\oint x\,dy$ and $\displaystyle \oint y\,dx$.
+
+  Then parametrize the boundary of the rectangle $[0,a]\times[0,b]$ counterclockwise.
+  Compute the same two integrals.
+
+  Do the same for the triangle with vertices $(0,0)$, $(1,0)$, $(0,1)$.
+
+  What do you observe? What are these integrals calculating?
+\end{problem}
+
+\begin{problem}
+  Now consider the ``figure-eight'' curve $\gamma(t)=(\sin t,\;\sin 2t)$ for $t\in[0,2\pi]$.
+  
+  Compute $\displaystyle\oint x\,dy$.  What does this mean for your observations in \ref{integrate-around-boundary}?
+\end{problem}
+
+\begin{problem}
+  Prove that arc length is independent of parametrization.
+  More precisely, suppose $g:[a,b]\to\R^n$ is $C^1$ with $g'(t)\neq 0$,
+  and let $\varphi:[c,d]\to[a,b]$ be $C^1$ with $\varphi'>0$ (an
+  orientation-preserving reparametrization).
+  Show that $\tilde g=g\circ\varphi$ has the same arc length as $g$.
+  What happens if $\varphi'<0$?
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}
+  Let $C$ be a piecewise smooth curve in $\R^n$ and $F$ a continuous vector field on $C$.
+  Then
+  \[
+    \left|\int_C F\cdot dx\right| < \int_C |F|\,ds.
+  \]
+\end{problem}
+
+\begin{problem}
+  For any $C^1$ curve $\gamma:[a,b]\to\R^n$, the arc length satisfies \(L(\gamma)\ge|\gamma(b)-\gamma(a)|\),
+  with equality if and only if $\gamma$ parametrizes a line segment.
+\end{problem}
 
 \end{document}
