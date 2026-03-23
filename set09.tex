@@ -8,15 +8,122 @@
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+  I could be bounded in a nutshell and count myself a king of infinite space.
+  \byline{Shakespeare's \textit{Hamlet} but not relating boundary data to the interior.}
 \end{inspiration}
 
 \section{Terminology}
 
+\begin{problem}\label{one-form}%
+  On an open set $U \subset \R^n$, what does a \textbf{$1$-form} refer to?
+\end{problem}
+
+\begin{problem}\label{two-form}%
+  What is a \textbf{2-form}? How does the \textbf{wedge product} of 1-forms yield a 2-form?
+\end{problem}
+
+\begin{problem}\label{exterior-derivative}%
+  Define the \textbf{exterior derivative} taking $k$-forms to $(k+1)$-forms.
+\end{problem}
+
+\begin{problem}
+  What does it mean for an open set $U\subseteq\R^2$ to be \textbf{simply connected}?
+\end{problem}
+
 \section{Numericals}
+
+\begin{problem}\label{area-forms}%
+  The \textbf{astroid} is the curve parametrized by $\gamma(t) = (\cos^3 t, \sin^3 t)$ for $t\in[0,2\pi]$.
+  
+  By Green's theorem, the area enclosed by a positively oriented simple closed curve $C$ is
+  \[
+    \text{area} = \int_C x\,dy = -\int_C y\,dx = \frac{1}{2}\int_C\left(x\,dy - y\,dx\right)
+  \]
+  Use this to compute the area enclosed by the astroid.
+\end{problem}
 
 \section{Exploration}
 
+\begin{problem}\label{dd-zero}%
+  Show that $d(df) = 0$ for every $C^2$ function $f:U\to\R$.
+  
+  What single-variable theorem does this encode?
+  How does it relate to \ref{closed-vs-exact}?
+\end{problem}
+
+\begin{problem}\label{shoelace}%
+  Let $P_1=(x_1,y_1),\dots,P_n=(x_n,y_n)$ be the vertices of a polygon listed counterclockwise, with the convention $P_{n+1}=P_1$.
+  Use \ref{area-forms} to derive the \textbf{shoelace formula}, namely that
+    \[
+      \operatorname{area} = \frac{1}{2}\sum_{i=1}^{n}\det\begin{pmatrix}x_i & x_{i+1}\\ y_i & y_{i+1}\end{pmatrix}.
+    \]
+\end{problem}
+
+\begin{problem}\label{green-proof}%
+  Prove Green's theorem for the case where $S$ is a type~I region, i.e.,
+  \[
+    S = \{(x,y) : a \le x \le b, \; \phi(x) \le y \le \psi(x)\}
+  \]
+  for continuous functions $\phi \le \psi$ on $[a,b]$.
+  Specifically, show that for any $C^1$ function $P$,
+  \[
+    \int_{\partial S} P\,dx = -\iint_S \frac{\partial P}{\partial y}\,dA.
+  \]
+\end{problem}
+
+\begin{problem}\label{green-cauchy}%
+  Recall the Cauchy--Riemann equations from \ref{cauchy-riemann-equations}.
+  Suppose $f(z) = u(x,y)+iv(x,y)$ is complex differentiable on a simply connected open set $U\subseteq\R^2$, and let $C$ be a piecewise smooth simple closed curve in $U$ bounding a region $S\subset U$.
+  Define the complex line integral
+  \[
+    \oint_C f(z)\,dz = \oint_C(u\,dx-v\,dy)+i\oint_C(v\,dx+u\,dy).
+  \]
+  Apply Green's theorem to the real and imaginary parts and use the Cauchy--Riemann equations to prove \textbf{Cauchy's integral theorem}: $\displaystyle\oint_C f(z)\,dz=0$.
+\end{problem}
+
+
+\begin{problem}\label{divergence-2d}%
+  For a $C^1$ vector field $F = (P,Q)$ on a region $S\subset\R^2$ with piecewise smooth boundary, let $\hat n$ denote the outward-pointing unit normal to $\partial S$.
+  Show that if $\partial S$ is parameterized counterclockwise by $(x(t),y(t))$, then $\hat n\,ds = (dy,-dx)$.
+  Then derive from Green's theorem the \textbf{two-dimensional divergence theorem}, namely
+  \[
+    \iint_S \operatorname{div} F\,dA = \oint_{\partial S} F\cdot\hat n\,ds.
+  \]
+\end{problem}
+
+\begin{problem}\label{green-first-identity}%
+  Let $S\subset\R^2$ be a bounded region with piecewise smooth boundary, and let $u$ and $v$ be $C^2$ on a neighborhood of $\overline{S}$.
+  Write $\frac{\partial v}{\partial n} = \nabla v \cdot \hat n$ for the \textbf{outward normal derivative}.
+  
+  Apply \ref{divergence-2d} with $F = u\,\nabla v$ to deduce \textbf{Green's first identity}, namely
+  \[
+    \iint_S \left(u\,\Delta v + \nabla u\cdot\nabla v\right)dA = \oint_{\partial S} u\,\frac{\partial v}{\partial n}\,ds.
+  \]
+\end{problem}
+
+\begin{problem}
+  Now prove \textbf{Green's second identity} by subtracting to obtain
+  \[
+    \iint_S \left(u\,\Delta v - v\,\Delta u\right)dA = \oint_{\partial S}\left(u\,\frac{\partial v}{\partial n} - v\,\frac{\partial u}{\partial n}\right)ds.
+  \]
+\end{problem}
+
+\begin{problem}
+  Now suppose $u$ is harmonic, i.e., $\Delta u = 0$.  Set $v = u$ in the first identity and show that if $u$ vanishes on $\partial S$, then $u \equiv 0$ on $S$.
+  This proves a \textbf{uniqueness theorem} that a harmonic function on $S$ is determined by its boundary values.
+\end{problem}
+
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}
+  If $\omega$ is a closed $C^1$ 1-form on an open set $U\subseteq\R^2$, then $\omega$ is exact on $U$.
+\end{problem}
+
+\begin{problem}
+  Suppose $\gamma_1:[0,1]\to\R^2$ and $\gamma_2:[0,1]\to\R^2$ are $C^1$ simple closed curves whose images coincide as subsets of~$\R^2$.
+  Then for every $C^1$ 1-form $\omega$,
+  \(
+    \displaystyle\oint_{\gamma_1} \omega = \oint_{\gamma_2} \omega\).
+  \end{problem}
 
 \end{document}
