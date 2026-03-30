@@ -8,15 +8,145 @@
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+Smooth runs the water where the brook is deep.
+\byline{Shakespeare's \textit{Henry VI, Part 2}, maybe about smooth parametrizations of surfaces.}
 \end{inspiration}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Terminology}
 
+\begin{problem}\label{pullback-definition}%
+  Let $\Phi:\R^m\to\R^n$ be a smooth map.
+  Recall \ref{one-form} and \ref{two-form}.
+  Define the \textbf{pullback} $\Phi^*\omega$ when $\omega$ is a $0$-form (i.e., a function),
+  a $1$-form, and a $2$-form on $\R^n$.
+\end{problem}
+
+\begin{problem}
+  What is the \textbf{cross product} of two vectors $u$ and $v$? We denote this ``$u \times v$.''
+\end{problem}
+
+\begin{problem}\label{flux-definition}%
+  For a vector field $F$ and a parameterized surface $\Phi:D\to\R^3$, define the \textbf{flux integral} $\displaystyle\iint_\Phi F\cdot d\vec{S}$ by finding
+  a $2$-form $\omega_F$ on $\R^3$ built from the components of $F$ so that
+  \(\displaystyle\iint_\Phi F\cdot d\vec{S} = \iint_D \Phi^*\omega_F\).
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Numericals}
 
+\begin{problem}\label{torus-area}%
+  The \textbf{torus} with radii $0<r<R$ is parametrized by
+  \[
+    \Phi(\theta,\phi)=\bigl((R+r\cos\phi)\cos\theta,\;(R+r\cos\phi)\sin\theta,\;r\sin\phi\bigr)
+  \]
+  for $(\theta,\phi)\in[0,2\pi]\times[0,2\pi]$.
+  Compute the surface area; then compute the flux of $F(x,y,z)=(x,y,0)$ through the torus, oriented via the outward normal.
+\end{problem}
+
+\begin{problem}\label{solid-angle-form}%
+  Recall the angle form from \ref{winding-number}. Define the \textbf{solid angle form} on $\R^3\setminus\{0\}$ by
+  \[
+    \Omega = \frac{x\,dy\wedge dz + y\,dz\wedge dx + z\,dx\wedge dy}{(x^2+y^2+z^2)^{3/2}}.
+  \]
+  Compute $\displaystyle\iint_{S^2}\Omega$ where $S^2$ is the unit sphere with outward orientation.
+\end{problem}
+
+
+\begin{problem}\label{helicoid-pullback}%
+  The \textbf{helicoid} is the parametrized surface $\Phi(u,v)=(u\cos v,u\sin v,v)$.
+  Compute the three pullbacks
+  \(\Phi^*(dx\wedge dy)\) and \(\Phi^*(dy\wedge dz)\) and \(\Phi^*(dz\wedge dx)\).
+
+  
+  Write each as $A\,du\wedge dv$, $B\,du\wedge dv$, $C\,du\wedge dv$ respectively, and verify that
+  $|\Phi_u\times\Phi_v|^2=A^2+B^2+C^2$.
+\end{problem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Exploration}
 
+\begin{problem}\label{pullback-wedge}%
+  For two 1-forms $\alpha$ and $\beta$, define
+  \[
+    (\alpha\wedge\beta)(v,w)
+    = \det\begin{pmatrix} \alpha(v) & \alpha(w) \\ \beta(v) & \beta(w) \end{pmatrix}
+    = \alpha(v)\,\beta(w) - \alpha(w)\,\beta(v).
+  \]
+  For 1-forms $\omega$ and $\eta$ on $\R^n$, and a smooth $\Phi:\R^m\to\R^n$, prove
+  \(\Phi^*(\omega\wedge\eta)=(\Phi^*\omega)\wedge(\Phi^*\eta)\).
+\end{problem}
+
+\begin{problem}\label{pullback-commutes-d}%
+  Let $\Phi:\R^m\to\R^n$ be smooth.
+  Prove that pullback commutes with the exterior derivative (recall \ref{exterior-derivative}), i.e., prove that \(d(\Phi^*\omega)=\Phi^*(d\omega)\) for a $k$-form $\omega$.
+
+  Check this explicitly using the helicoid from \ref{helicoid-pullback} and
+  $\omega=xz\,dy-y\,dz$.
+\end{problem}
+
+\begin{problem}\label{first-fundamental-form}%
+  Let $\Phi:D\to\R^3$ be a regular parametrized surface.  Write
+  \[
+    E=\Phi_u\cdot\Phi_u,\qquad F=\Phi_u\cdot\Phi_v,\qquad G=\Phi_v\cdot\Phi_v
+  \]
+  for the coefficients of the \textbf{first fundamental form}.
+  Show that $|\Phi_u\times\Phi_v|=\sqrt{EG-F^2}$.
+  
+  For a graph $z=h(x,y)$ over a domain $D\subset\R^2$, deduce that the surface area equals
+  \[
+    \iint_D\sqrt{1+h_x^2+h_y^2}\,dx\,dy.
+  \]
+  Why is this always $\ge\operatorname{area}(D)$, with equality iff $h$ is constant?
+\end{problem}
+
+\begin{problem}\label{solid-angle-closed}%
+  Show that the solid angle form $\Omega$ from \ref{solid-angle-form} is closed, i.e., $d\Omega=0$ on $\R^3\setminus\{0\}$.
+  \end{problem}
+
+\begin{problem}
+  The \textbf{catenoid} is the surface of revolution obtained by revolving $x=\cosh z$ about the $z$-axis, parametrized by
+  \[
+    \Phi(u,v)=(\cosh u\cos v,\cosh u\sin v,u), \qquad (u,v)\in\R\times[0,2\pi].
+  \]
+  The \textbf{helicoid} from \ref{helicoid-pullback} is $\Psi(u,v)=(u\cos v,u\sin v,v)$.
+  Consider the one-parameter family
+  \[
+    \Phi_t(u,v)=\cos t \cdot \Phi(u,v) + \sin t \cdot \Psi(u,v)
+    \text{ for $t\in[0,\pi/2]$.}
+  \]
+  Note that $\Phi_0$ is the catenoid and $\Phi_{\pi/2}$ is the helicoid, so this deformation transforms one into the other.
+
+  Compute the first fundamental form coefficients $E_t,F_t,G_t$ for each $t$. Show that $E_t G_t - F_t^2$ is independent of $t$.
+  
+  What does this say about areas?
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}
+  Let $\Phi_1:D_1\to\R^3$ and $\Phi_2:D_2\to\R^3$ be regular parametrizations with the same image, i.e., $\Phi_1(D_1)=\Phi_2(D_2)$.
+  
+  Then a $2$-form $\omega$ on $\R^3$,
+  \(
+  \displaystyle\iint_{D_1}\Phi_1^*\omega = \iint_{D_2}\Phi_2^*\omega.
+  \) \hfill(\textit{Hint:} review \ref{same-curve-same-integral}.)
+\end{problem}
+
+\begin{problem}\label{reparametrization-invariance}%
+  Let $\Phi:D_1\to\R^3$ be a regular parametrized surface and let $\psi:D_2\to D_1$ be a $C^1$ diffeomorphism.
+  Consider $\Psi=\Phi\circ\psi$ and suppose $\det D\psi > 0$ everywhere.
+
+  Then \ref{pullback-wedge} shows \(\displaystyle\iint_{D_2}\Psi^*\,\omega=\displaystyle\iint_{D_1}\Phi^*\omega\).
+\end{problem}
+
+\begin{problem}
+  Let $\Phi:D\to\R^3$ be a regular parametrized surface, and let $\pi:\R^3\to\R^2$ denote the projection $\pi(x,y,z)=(x,y)$.
+  Then \(\Area(\Phi(D))\ge\Area\bigl(\pi(\Phi(D))\bigr)\).
+\end{problem}
+
 
 \end{document}
