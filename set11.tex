@@ -3,20 +3,146 @@
 \author{Jim Fowler}
 \hwtitle{Honors Analysis II}
 \input{preamble}
+\usepackage{hyperref}
 
 \begin{document}
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+``$\Pi\alpha\nu\tau\alpha$ $\rho\epsilon\iota$.''
+\byline{Heraclitus' \href{https://en.wikipedia.org/wiki/Panta_rhei_(doctrine)}{``flux doctrine''}\ldots not about flux through a surface.}
 \end{inspiration}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Terminology}
 
+\begin{problem}\label{divergence-definition}%
+  Let $F = (F_1, F_2, F_3) : U \to \R^3$ be a $C^1$ vector field on an open set $U \subseteq \R^3$.
+  Define the \textbf{divergence} of $F$ (written $\nabla \cdot F$ or $\Div F$).
+\end{problem}
+
+\begin{problem}\label{curl-definition}%
+  Let $F = (F_1, F_2, F_3) : U \to \R^3$ be a $C^1$ vector field on an open set $U \subseteq \R^3$.
+  Define the \textbf{curl} of $F$ (written $\nabla \times F$ or $\curl F$).
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numericals}
 
+\begin{problem}
+  Let $F(x,y,z) = (x^3, y^3, z^3)$.
+  Let $\Omega$ be the unit ball $\{(x,y,z) : x^2+y^2+z^2 \le 1\}$.
+  Compute $\displaystyle\iint_{\partial\Omega} F \cdot \hat{n}\,dS$ using the divergence theorem.
+\end{problem}
+
+\begin{problem}
+  Let $F(x,y,z) = (xz, yz, z^2)$ and let $\Omega$ be the solid cone
+  \[
+    \Omega = \{(x,y,z) : 0 \le z \le 1,\; x^2+y^2 \le z^2\}.
+  \]
+  Compute $\displaystyle\iint_{\partial\Omega} F\cdot\hat{n}\,dS$.
+\end{problem}
+
+\begin{problem}\label{curl-curl-identity}%
+  Consider the vector field $F(x,y,z)=(xz^2, x^2y, y^2z)$.
+
+  Compute $\operatorname{curl}(\operatorname{curl}\, F)$ and $\nabla(\operatorname{div}\, F) - \Delta F$. What do you notice?
+\end{problem}
+
+\begin{problem}\label{inverse-square-flux}%
+  Define $G : \R^3 \setminus \{0\} \to \R^3$ by
+  \[
+    G(x,y,z) = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}.
+  \]
+  Compute $\operatorname{div} G$ on $\R^3 \setminus \{0\}$ and~$\displaystyle\iint_{S^2} G \cdot \hat{n}\,dS$. (cf.~\ref{solid-angle-form}).
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exploration}
 
+\begin{problem}
+  In \ref{inverse-square-flux}, shouldn't the divergence theorem imply that $\displaystyle\iint_{S^2} G\cdot\hat{n}\,dS$ vanishes? Why or why not?
+  \end{problem}
+
+\begin{problem}
+  How do divergence and curl relate to the exterior derivative?
+
+  Given a $1$-form $\omega = F_1\,dx + F_2\,dy + F_3\,dz$ and a $2$-form $\eta = P\,dy\wedge dz + Q\,dz\wedge dx + R\,dx\wedge dy$, identify $d\omega$ and $d\eta$ in terms of the curl and divergence of appropriate vector fields.
+\end{problem}
+
+
+\begin{problem}\label{div-curl-zero}%
+  Let $F:U\to\R^3$ be $C^2$ on an open set $U\subseteq\R^3$.
+  Show that $\operatorname{div}(\operatorname{curl}\, F) = 0$.
+
+  Interpret this in terms of the exterior derivative, using \ref{dd-zero}.
+\end{problem}
+
+\begin{problem}\label{curl-grad-zero}%
+  Let $f:U\to\R$ be $C^2$ on an open set $U\subseteq\R^3$.
+  Show that $\operatorname{curl}(\nabla f) = 0$.
+
+  What is the relationship between this result, \ref{div-curl-zero}, and the statement $d \circ d = 0$?
+\end{problem}
+
+\begin{problem}\label{green-3d-identities}%
+  Let $\Omega\subset\R^3$ be a bounded region with smooth boundary, and let $u,v$ be $C^2$ on a neighborhood of $\overline{\Omega}$.
+
+  Generalize \ref{green-first-identity} to three dimensions: apply the divergence theorem to $F = u\,\nabla v$ to prove
+  \[
+    \iiint_\Omega \left(u\,\Delta v + \nabla u \cdot \nabla v\right) dV = \iint_{\partial\Omega} u\,\frac{\partial v}{\partial n}\,dS.
+  \]
+  Then derive the three-dimensional version of Green's second identity as well.
+\end{problem}
+
+\begin{problem}
+  Use \ref{green-3d-identities} to prove the \textbf{mean value property} for harmonic functions:
+  if $\Delta u = 0$ in an open set containing the closed ball $\overline{B(a,r)}$, then
+  \[
+    u(a) = \frac{1}{4\pi r^2}\iint_{S(a,r)} u\,dS,
+  \]
+  where $S(a,r)$ is the sphere of radius $r$ centered at $a$.
+
+  \textit{Hint:} Apply Green's second identity on the region between $S(a,r)$ and a small sphere $S(a,\epsilon)$, taking $v(x) = -1/(4\pi|x-a|)$.  \hfill (cf.~\ref{harmonic-averaging})
+\end{problem}
+
+\begin{problem}
+  Let $\Omega \subset \R^3$ be a bounded region with smooth boundary.  Show that
+  \[
+    \operatorname{vol}(\Omega) = \frac{1}{3}\iint_{\partial\Omega} (x,y,z)\cdot\hat{n}\,dS.
+  \]
+  Use this to compute the volume of the region enclosed by the torus from \ref{torus-area}.
+\end{problem}
+
+\begin{problem}
+  Suppose $\Omega\subset\R^3$ is bounded with smooth boundary and $u$ is harmonic on $\Omega$ and continuous on $\overline{\Omega}$.  Using the divergence theorem (or \ref{green-3d-identities}), prove the \textbf{maximum principle}: the maximum of $u$ on $\overline{\Omega}$ is attained on $\partial\Omega$.
+
+  \textit{Hint:} If $u$ attains its maximum at an interior point $p$, consider $v(x) = u(x) + \epsilon |x-p|^2$ for small $\epsilon > 0$.
+\end{problem}
+
+\begin{problem}
+  Suppose $\Omega_1 \subset \Omega_2 \subset \R^3$ are bounded regions with smooth boundaries. If $F$ is $C^1$ on $\overline{\Omega_2}\setminus\Omega_1$ and $\operatorname{div} F = 0$ there, then
+  \[
+    \iint_{\partial\Omega_1} F\cdot\hat{n}_1\,dS = \iint_{\partial\Omega_2} F\cdot\hat{n}_2\,dS,
+  \]
+  where $\hat{n}_i$ is the outward unit normal to $\partial\Omega_i$.
+
+  Use this to reprise \ref{inverse-square-flux} and compute the flux of the inverse-square field through \emph{any} smooth closed surface enclosing the origin.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}
+  If $F:\R^3\to\R^3$ is $C^1$ and $\operatorname{div} F = 0$ everywhere, then $F = \operatorname{curl} G$ for some $C^2$ vector field $G:\R^3\to\R^3$.
+\end{problem}
+
+\begin{problem}
+  If $F:\R^3\to\R^3$ is $C^1$ and $\operatorname{curl} F = 0$ everywhere, then $F$ is conservative.
+\end{problem}
+
+\begin{problem}
+  If $u:\R^3\to\R$ is harmonic and bounded, then $u$ is constant.
+\end{problem}
 
 \end{document}
