@@ -3,20 +3,106 @@
 \author{Jim Fowler}
 \hwtitle{Honors Analysis II}
 \input{preamble}
-
 \begin{document}
+
 \maketitle
 
 \begin{inspiration}
-This problem set intentionally left blank.
+One of the principal objects of theoretical research is to find the point of view from which the subject appears in the greatest simplicity.
+\byline{Josiah Willard Gibbs}
 \end{inspiration}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Terminology}
 
+\begin{problem}\label{stokes-statement}%
+  In the spirit of the Gibbs' quote above, state \textbf{Stokes' theorem}.
+\end{problem}
+
+\begin{problem}\label{orientation-of-boundary}%
+  For oriented $M$, what is meant by the \textbf{induced orientation} on $\partial M$?
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numericals}
 
+\begin{problem}
+  Let $F(x,y,z) = (y^2 z, xz^2, x^2 y)$ and let $C$ be the intersection of the unit sphere centered at the origin with the plane $z = 0$, oriented counterclockwise when viewed from above.
+  Use Stokes' theorem to compute $\displaystyle\oint_C F \cdot d\vec{r}$ by finding a convenient surface bounded by $C$.
+\end{problem}
+
+\begin{problem}\label{maxwell}%
+  In physics, the electric field $\vec{E}$ and magnetic field $\vec{B}$ satisfy \textbf{Maxwell's equations} (in units where $c=1$ and in vacuum):
+  \[
+    \Div \vec{E} = 0, \qquad \Div \vec{B} = 0, \qquad \curl \vec{E} = -\frac{\partial \vec{B}}{\partial t}, \qquad \curl \vec{B} = \frac{\partial \vec{E}}{\partial t}.
+  \]
+  Define the \textbf{Faraday $2$-form} on $\R^4$ (with coordinates $x,y,z,t$) by
+  \[
+    \mathcal{F} = E_1\,dx\wedge dt + E_2\,dy\wedge dt + E_3\,dz\wedge dt + B_1\,dy\wedge dz + B_2\,dz\wedge dx + B_3\,dx\wedge dy.
+  \]
+  Show that two of Maxwell's equations are equivalent to $d\mathcal{F} = 0$.
+
+  Now define the \textbf{dual} $2$-form
+  \[
+    \star\mathcal{F} = -B_1\,dx\wedge dt - B_2\,dy\wedge dt - B_3\,dz\wedge dt + E_1\,dy\wedge dz + E_2\,dz\wedge dx + E_3\,dx\wedge dy.
+  \]
+  Show that the remaining two equations are equivalent to $d(\star\mathcal{F}) = 0$.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Exploration}
 
+\begin{problem}\label{homotopy-invariance}%
+  Two piecewise smooth closed curves $\gamma_0, \gamma_1 : [0,1] \to U$ are \textbf{homotopic in $U$} if there exists a continuous map $H:[0,1]\times[0,1]\to U$ with $H(t,0)=\gamma_0(t)$ and $H(t,1)=\gamma_1(t)$.
+
+  Suppose $\omega$ is a closed $1$-form on $U$ (i.e., $d\omega = 0$) and $H$ is smooth.  Use Stokes' theorem to prove that
+  \[
+    \oint_{\gamma_0}\omega = \oint_{\gamma_1}\omega.
+  \]
+  Then explain how the Poincar\'e lemma (\ref{poincare-lemma}) and this result together imply:
+  on a simply connected open set, every closed $1$-form is exact. What definition of ``simply connected'' will you use?
+\end{problem}
+
+\begin{problem}\label{de-rham}%
+  Let $U = \R^3 \setminus \{z\text{-axis}\}$.  Consider the $1$-form
+  \[
+    \alpha = \frac{-y\,dx + x\,dy}{x^2+y^2}.
+  \]
+  Show that $\alpha$ is closed but not exact on $U$.
+  
+  Then consider the $2$-form $\beta = \dfrac{x\,dy\wedge dz + y\,dz\wedge dx}{x^2+y^2}$.
+
+  Show that $d\beta = 0$ on $U$.  Is $\beta$ exact on $U$?
+\end{problem}
+
+\begin{problem}\label{brouwer}%
+  Suppose $g : \overline{D^2} \to \overline{D^2}$ is a smooth map from the closed unit disk to itself with $g(x) \neq x$ for all $x \in \overline{D^2}$.  For each $x \in \overline{D^2}$, let $r(x)$ be the point where the ray from $g(x)$ through $x$ hits $S^1$.  This gives a smooth \textbf{retraction} $r: \overline{D^2} \to S^1$.  Use Stokes' theorem to derive a contradiction, and thereby prove a smooth version of the \textbf{Brouwer fixed-point theorem} in dimension $2$: a smooth map $g:\overline{D^2}\to\overline{D^2}$ has a fixed point.
+\end{problem}
+
+\begin{problem}
+Does there exists a smooth vector field $F:\R^3\to\R^3$ with $\Div\,F = 1$ everywhere and $F$ bounded? If so, exhibit such a vector field. If not, show this is impossible.
+\end{problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Prove or Disprove and Salvage if Possible}
+
+\begin{problem}
+  If $\omega$ is a $1$-form on $\R^3$ with $d\omega = 0$, then $\omega$ is exact, i.e., $\omega = df$ for some smooth function $f$.
+\end{problem}
+
+\begin{problem}
+  If $M$ is a compact smooth surface without boundary (i.e., $\partial M = \varnothing$) embedded in $\R^3$ and $\omega$ is an exact $2$-form on $\R^3$, then $\displaystyle\iint_M \omega = 0$.
+\end{problem}
+
+\begin{problem}
+  Let $f:\overline{D^2}\to\R^2$ be a smooth map with $f|_{S^1}=\mathrm{id}$. Then $f(\overline{D^2})\supseteq D^2$, i.e., the image covers the open disk.
+  
+  \textit{Hint:} If some $(p_1,p_2) \in D^2$ is missed, consider the $1$-form
+  \[
+    \alpha = \dfrac{-( y-p_2)\,dx+(x-p_1)\,dy}{(x-p_1)^2+(y-p_2)^2}
+  \]
+  and compute $\int_{S^1} f^*\alpha$ in two ways.
+\end{problem}
+
 
 \end{document}
