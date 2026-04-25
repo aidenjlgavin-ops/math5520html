@@ -11,7 +11,7 @@ This repository contains problem sets for the course.
 - Differentiability as best linear approximation
 - Examples/counterexamples; directional derivatives vs differentiability  
 📄 [set01.tex](set01.tex)  
-🪄 [HTML](https://github.com/aidenjlgavin-ops/math5520h-html/set01.html)  
+🪄 [HTML](https://github.com/aidenjlgavin-ops/math5520html/set01.html)  
 📘 [PDF](https://kisonecat.github.io/math4182h/set01.pdf)
 
 ### Problem Set 2 — Chain Rule and Gradient
